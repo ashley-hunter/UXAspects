@@ -30,7 +30,11 @@ ux-page-header-horizontal-navigation-item {
         }
 
         &:focus {
-            .aspects-outline;
+            outline: none;
+
+            &.cdk-keyboard-focused {
+                .aspects-outline;
+            }
         }
 
         &.active,
@@ -67,7 +71,11 @@ ux-page-header-horizontal-navigation-item {
         }
 
         &:focus {
-            .aspects-outline;
+            outline: none;
+
+            &.cdk-keyboard-focused {
+                .aspects-outline;
+            }
         }
 
         .dropdown-item-title {

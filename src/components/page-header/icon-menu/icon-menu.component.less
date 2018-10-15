@@ -23,7 +23,11 @@ ux-page-header-icon-menu {
             }
 
             &:focus {
-                .aspects-outline;
+                outline: none;
+
+                &.cdk-keyboard-focused {
+                    .aspects-outline;
+                }
             }
         }
     }
@@ -54,7 +58,11 @@ ux-page-header-icon-menu {
                 font-size: 1rem;
 
                 &:focus {
-                    .aspects-outline;
+                    outline: none;
+
+                    &.cdk-keyboard-focused {
+                        .aspects-outline;
+                    }
                 }
 
                 .hpe-icon {

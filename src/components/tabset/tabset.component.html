@@ -5,7 +5,7 @@
     [attr.aria-label]="ariaLabel"
     [attr.aria-orientation]="stacked === 'none' ? 'horizontal' : 'vertical'">
 
-	<li role="presentation" 
+	<li role="presentation"
         class="nav-item"
         *ngFor="let tab of tabset.tabs$ | async; let index = index"
         [class.active]="tab.active$ | async"
@@ -15,9 +15,9 @@
         <a class="nav-link"
             [id]="tab.id"
             role="tab"
+            cdkMonitorElementFocus
             [uxTabFocus]="tab"
             [tabindex]="(tab.active$ | async) ? 0 : -1"
-            [class.highlighted]="(tabset.focused$ | async) && (tabset.highlighted$ | async) === tab"            
             (mousedown)="tabset.select(tab)"
             (focus)="tabset.focused$.next(true)"
             (blur)="tabset.focused$.next(false)"

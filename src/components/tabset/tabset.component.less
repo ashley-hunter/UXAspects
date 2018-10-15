@@ -2,7 +2,9 @@ ux-tabset {
     .nav {
         .nav-item {
             .nav-link {
-                &.highlighted {
+                outline: none;
+
+                &:focus.cdk-keyboard-focused {
                     .aspects-outline();
                 }
             }

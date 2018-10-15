@@ -8,6 +8,7 @@
     (mouseleave)="hoverLeave()">
 
     <a role="menuitem"
+        cdkMonitorElementFocus
         class="dropdown-item"
         [class.selected]="item.selected"
         aria-haspopup="true"
@@ -39,6 +40,7 @@
         <li *ngFor="let subItem of item.children" role="none">
 
             <a role="menuitem"
+                cdkMonitorElementFocus
                 class="dropdown-item"
                 [class.selected]="subItem.selected"
                 [attr.aria-selected]="subItem.selected"

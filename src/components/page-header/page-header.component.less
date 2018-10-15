@@ -62,7 +62,11 @@ ux-page-header {
                 }
 
                 &:focus {
-                    .aspects-outline;
+                    outline: none;
+
+                    &.cdk-keyboard-focused {
+                        .aspects-outline;
+                    }
                 }
 
                 & > * {

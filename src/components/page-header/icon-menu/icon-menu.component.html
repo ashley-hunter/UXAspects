@@ -4,6 +4,7 @@
     [(isOpen)]="isOpen">
 
     <a role="button"
+        cdkMonitorElementFocus
         class="page-header-icon-menu-button"
         [attr.aria-label]="menu.label"
         aria-haspopup="true"
@@ -33,6 +34,7 @@
             <span class="font-bold" *ngIf="dropdown.header">{{ dropdown.title }}</span>
 
             <a *ngIf="!dropdown.header"
+                cdkMonitorElementFocus
                 role="menuitem"
                 class="dropdown-item"
                 tabindex="-1"

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Output, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
 import { TabsetService } from '../tabset.service';
 
 let uniqueTabId = 0;
@@ -23,7 +23,8 @@ export class TabComponent implements OnDestroy {
 
     @Input() set active(value: boolean) {
         if (value) {
-            this._tabset.select(this);
+            // prevent expression changed after check error
+            requestAnimationFrame(() => this._tabset.select(this));
         }
     }
 

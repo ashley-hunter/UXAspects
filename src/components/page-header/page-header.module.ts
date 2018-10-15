@@ -1,3 +1,4 @@
+import { A11yModule } from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -6,6 +7,7 @@ import { MenuNavigationModule } from '../../directives/menu-navigation/index';
 import { ResizeModule } from '../../directives/resize/index';
 import { ColorServiceModule } from '../../services/color/index';
 import { BreadcrumbsModule } from '../breadcrumbs/index';
+import { TabsetModule } from '../tabset/index';
 import { PageHeaderCustomMenuDirective } from './custom-menu/custom-menu.directive';
 import { PageHeaderIconMenuComponent } from './icon-menu/icon-menu.component';
 import { PageHeaderNavigationDropdownItemComponent } from './navigation/navigation-dropdown-item/navigation-dropdown-item.component';
@@ -24,6 +26,8 @@ import { PageHeaderComponent } from './page-header.component';
         MenuNavigationModule,
         ResizeModule,
         RouterModule,
+        TabsetModule,
+        A11yModule
     ],
     exports: [
         PageHeaderComponent,

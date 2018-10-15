@@ -6,6 +6,7 @@
     placement="bottom left">
 
     <button role="menuitem"
+        cdkMonitorElementFocus
         class="horizontal-navigation-button"
         [class.selected]="item.selected"
         [class.open]="isOpen"
@@ -43,6 +44,7 @@
 
 <button *ngIf="!item.children || item.children.length === 0 || (secondary$ | async)"
     role="menuitem"
+    cdkMonitorElementFocus
     class="horizontal-navigation-button"
     [class.selected]="item.selected"
     [attr.aria-selected]="item.selected"
