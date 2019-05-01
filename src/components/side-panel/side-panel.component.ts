@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { sidePanelStateAnimation, SidePanelAnimationState } from './side-panel-animations';
-import { SidePanelService } from './side-panel.service';
+import { SidePanelService, SidePanelState } from './side-panel.service';
 
 @Component({
     selector: 'ux-side-panel',
@@ -19,11 +19,20 @@ export class SidePanelComponent implements OnInit, OnDestroy {
     @Input()
     @HostBinding('class.open')
     get open(): boolean {
-        return this.service.open$.value;
+        return this.service.state$.value === SidePanelState.Open;
     }
 
     set open(value: boolean) {
-        this.service.open$.next(value);
+        this.service.state$.next(value ? SidePanelState.Open : SidePanelState.Closed);
+    }
+
+    @Input()
+    get state(): SidePanelState {
+        return this.service.state$.value;
+    }
+
+    set state(value: SidePanelState) {
+        this.service.state$.next(value);
     }
 
     @Input()
@@ -55,6 +64,9 @@ export class SidePanelComponent implements OnInit, OnDestroy {
 
     @Output()
     openChange = new EventEmitter<boolean>();
+
+    @Output()
+    stateChange = new EventEmitter<SidePanelState>();
 
     get position() {
         if (this.inline) {
@@ -99,13 +111,10 @@ export class SidePanelComponent implements OnInit, OnDestroy {
     constructor(protected service: SidePanelService, private _elementRef: ElementRef) {}
 
     ngOnInit() {
-        this.service.open$.pipe(takeUntil(this._onDestroy)).subscribe(isOpen => {
-            this.animationPanelState = isOpen
-                ? this.animate
-                    ? SidePanelAnimationState.Open
-                    : SidePanelAnimationState.OpenImmediate
-                : SidePanelAnimationState.Closed;
-            this.openChange.emit(isOpen);
+        this.service.state$.pipe(takeUntil(this._onDestroy)).subscribe(state => {
+            this.animationPanelState = this.getAnimationState(state);
+            this.openChange.emit(state === SidePanelState.Open);
+            this.stateChange.emit(state);
         });
     }
 
@@ -137,5 +146,16 @@ export class SidePanelComponent implements OnInit, OnDestroy {
         ) {
             this.closePanel();
         }
+    }
+
+    private getAnimationState(state: SidePanelState): SidePanelAnimationState {
+        switch (state) {
+            case SidePanelState.Open:
+                return this.animate ? SidePanelAnimationState.Open : SidePanelAnimationState.OpenImmediate;
+            case SidePanelState.Minimized:
+                return SidePanelAnimationState.Minimized;
+        }
+
+        return SidePanelAnimationState.Closed;
     }
 }

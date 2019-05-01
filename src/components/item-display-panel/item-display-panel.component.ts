@@ -2,7 +2,7 @@ import { Component, ContentChild, Directive, ElementRef, EventEmitter, Input, On
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { sidePanelStateAnimation } from '../side-panel/side-panel-animations';
 import { SidePanelComponent } from '../side-panel/side-panel.component';
-import { SidePanelService } from '../side-panel/side-panel.service';
+import { SidePanelService, SidePanelState } from '../side-panel/side-panel.service';
 
 @Directive({
     selector: '[uxItemDisplayPanelContent]'
@@ -80,7 +80,9 @@ export class ItemDisplayPanelComponent extends SidePanelComponent implements OnI
 
     ngOnInit() {
         super.ngOnInit();
-        this.service.open$.pipe(distinctUntilChanged(), takeUntil(this._onDestroy)).subscribe(isVisible => this.visibleChange.emit(isVisible));
+        this.service.state$
+            .pipe(distinctUntilChanged(), takeUntil(this._onDestroy))
+            .subscribe(state => this.visibleChange.emit(state === SidePanelState.Open));
     }
 
     focus(): void {

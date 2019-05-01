@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { SidePanelState } from './side-panel-state';
 
 @Injectable()
 export class SidePanelService {
 
-    open$ = new BehaviorSubject<boolean>(false);
+    state$ = new BehaviorSubject<SidePanelState>(SidePanelState.Closed);
 
     open() {
-        this.open$.next(true);
+        this.state$.next(SidePanelState.Open);
     }
 
     close() {
-        this.open$.next(false);
+        this.state$.next(SidePanelState.Closed);
+    }
+
+    minimize() {
+        this.state$.next(SidePanelState.Minimized);
     }
 }
