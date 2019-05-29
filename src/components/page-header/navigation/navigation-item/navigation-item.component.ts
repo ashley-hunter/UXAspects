@@ -17,9 +17,9 @@ import { PageHeaderNavigationService } from '../navigation.service';
 })
 export class PageHeaderNavigationItemComponent implements OnInit, OnDestroy, FocusableOption {
 
-    @ViewChild('button') button: MenuNavigationToggleDirective;
-    @ViewChild('menu') menu: BsDropdownDirective;
-    @ViewChild('navigationBtn') navigationBtn: ElementRef;
+    @ViewChild('button', { static: false }) button: MenuNavigationToggleDirective;
+    @ViewChild('menu', { static: false }) menu: BsDropdownDirective;
+    @ViewChild('navigationBtn', { static: false }) navigationBtn: ElementRef;
     @ViewChildren(PageHeaderNavigationDropdownItemComponent) dropdowns: QueryList<PageHeaderNavigationDropdownItemComponent>;
 
     @Input() item: PageHeaderNavigationItem;

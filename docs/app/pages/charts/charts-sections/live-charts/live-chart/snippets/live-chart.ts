@@ -10,7 +10,7 @@ import { BaseChartDirective } from 'ng2-charts';
 export class AppComponent {
 
     // access the chart directive properties
-    @ViewChild(BaseChartDirective) baseChart: BaseChartDirective;
+    @ViewChild(BaseChartDirective, { static: false }) baseChart: BaseChartDirective;
 
     // configure the directive data
     lineChartData: Chart.ChartDataSets[];

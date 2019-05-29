@@ -198,9 +198,9 @@ export class TagInputComponent<T = any> implements OnInit, AfterContentInit, OnC
 
     @ContentChildren(TypeaheadComponent) typeaheadQuery: QueryList<TypeaheadComponent>;
 
-    @ViewChild('tagInput') tagInput: ElementRef;
+    @ViewChild('tagInput', { static: false }) tagInput: ElementRef;
 
-    @ViewChild('defaultTagTemplate') private _defaultTagTemplate: TemplateRef<any>;
+    @ViewChild('defaultTagTemplate', { static: false }) private _defaultTagTemplate: TemplateRef<any>;
 
     selectedIndex: number = -1;
 

@@ -21,7 +21,7 @@ export class SideNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     @Input() angularJsButtonClass: string = 'button-toggle-primary';
     @Input() angularButtonClass: string = 'button-toggle-accent';
 
-    @ViewChild('container') container: ElementRef;
+    @ViewChild('container', { static: false }) container: ElementRef;
 
     top: number;
     height: number;

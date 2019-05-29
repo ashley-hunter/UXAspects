@@ -1,7 +1,7 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ColorService } from '@ux-aspects/ux-aspects';
-import { BaseChartDirective } from 'ng2-charts';
 import { Chart } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
     selector: 'app',
@@ -11,7 +11,7 @@ import { Chart } from 'chart.js';
 export class AppComponent implements AfterViewInit {
 
     // access the chart directive properties
-    @ViewChild(BaseChartDirective) baseChart: BaseChartDirective;
+    @ViewChild(BaseChartDirective, { static: false }) baseChart: BaseChartDirective;
 
     // configure the directive data
     barChartData: Chart.ChartDataSets[] = [{

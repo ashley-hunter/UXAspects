@@ -13,9 +13,9 @@ export class AppComponent implements AfterViewInit {
     focus: DragAndDropComponent = null;
     direction: string;
 
-    @ViewChild('dropdown') dropdownTemplate: TemplateRef<any>;
-    @ViewChild('text') textTemplate: TemplateRef<any>;
-    @ViewChild('buttons') buttonsTemplate: TemplateRef<any>;
+    @ViewChild('dropdown', { static: false }) dropdownTemplate: TemplateRef<any>;
+    @ViewChild('text', { static: false }) textTemplate: TemplateRef<any>;
+    @ViewChild('buttons', { static: false }) buttonsTemplate: TemplateRef<any>;
 
     constructor(private _liveAnnouncer: LiveAnnouncer) {
 

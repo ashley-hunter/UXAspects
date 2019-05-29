@@ -1,15 +1,5 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import {
-    SearchBuilderComponentDefinition,
-    SearchBuilderFocusService,
-    SearchBuilderQuery,
-    SearchDateRangeComponent,
-    SearchDateRangeConfig,
-    SearchSelectComponent,
-    SearchSelectConfig,
-    SearchTextComponent,
-    SearchTextConfig
-} from '@ux-aspects/ux-aspects';
+import { SearchBuilderComponentDefinition, SearchBuilderFocusService, SearchBuilderQuery, SearchDateRangeComponent, SearchDateRangeConfig, SearchSelectComponent, SearchSelectConfig, SearchTextComponent, SearchTextConfig } from '@ux-aspects/ux-aspects';
 import 'chance';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
@@ -133,7 +123,7 @@ export class AppComponent implements OnDestroy {
 
     filteredFields: SearchBuilderField[];
 
-    @ViewChild('searchBuilderContent')
+    @ViewChild('searchBuilderContent', { static: false })
     searchBuilderContent: ElementRef<HTMLElement>;
 
     private _field$: Subject<SearchBuilderField> = new Subject<SearchBuilderField>();

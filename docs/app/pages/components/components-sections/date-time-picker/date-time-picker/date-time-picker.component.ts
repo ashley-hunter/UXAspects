@@ -17,7 +17,7 @@ import { IPlaygroundProvider } from '../../../../../interfaces/IPlaygroundProvid
 @DocumentationSectionComponent('ComponentsDateTimePickerComponent')
 export class ComponentsDateTimePickerComponent extends BaseDocumentationSection implements IPlaygroundProvider, AfterViewInit, OnDestroy {
 
-    @ViewChild('input') dateInput: ElementRef;
+    @ViewChild('input', { static: false }) dateInput: ElementRef;
 
     date: Date = new Date();
     timezone: DateTimePickerTimezone = { name: 'GMT', offset: 0 };

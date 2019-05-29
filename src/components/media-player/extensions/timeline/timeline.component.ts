@@ -15,8 +15,8 @@ import { MediaPlayerBaseExtensionDirective } from '../base-extension.directive';
 })
 export class MediaPlayerTimelineExtensionComponent extends MediaPlayerBaseExtensionDirective implements OnInit, AfterViewInit, OnDestroy {
 
-    @ViewChild('progressThumb') thumb: ElementRef;
-    @ViewChild('timeline') timelineRef: ElementRef;
+    @ViewChild('progressThumb', { static: false }) thumb: ElementRef;
+    @ViewChild('timeline', { static: false }) timelineRef: ElementRef;
 
     current: number = 0;
     position: number = 0;
