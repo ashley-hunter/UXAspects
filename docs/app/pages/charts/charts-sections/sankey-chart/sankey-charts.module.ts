@@ -9,8 +9,7 @@ import { ChartsSankeyChartNg1Component } from './sankey-chart-ng1/sankey-chart-n
 
 
 const SECTIONS = [
-    ChartsSankeyChartNg1Component,
-    ChartsSankeyChartComponent
+    ChartsSankeyChartNg1Component
 ];
 
 const ROUTES = [
