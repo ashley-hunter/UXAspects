@@ -49,6 +49,11 @@ export class ToolbarSearchComponent implements AfterContentInit, OnDestroy {
 
         this.expandedChange.emit(this.expanded);
 
+        // depending on when this is called the ContentChild may not be resolved
+        if (!this.field) {
+            return;
+        }
+
         if (this.expanded) {
             // Set focus on the input when expanded
             this.field.focus();

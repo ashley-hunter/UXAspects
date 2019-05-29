@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { documentationSectionNames } from '../../decorators/documentation-section-component';
 import { ILink } from '../../interfaces/ILink';
 import { IPlayground } from '../../interfaces/IPlayground';
@@ -12,7 +12,7 @@ import { Usage } from './../../interfaces/Usage';
     templateUrl: './component-section.component.html',
     styleUrls: ['./component-section.component.less']
 })
-export class ComponentSectionComponent implements OnInit {
+export class ComponentSectionComponent implements AfterViewInit {
 
     @Input() id: string;
     @Input() title: string;
@@ -35,7 +35,7 @@ export class ComponentSectionComponent implements OnInit {
         private _navigationService: NavigationService
     ) { }
 
-    ngOnInit(): void {
+    ngAfterViewInit(): void {
         const component = documentationSectionNames[this.componentName];
 
         if (component) {

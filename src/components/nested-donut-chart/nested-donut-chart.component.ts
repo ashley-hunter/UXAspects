@@ -49,10 +49,10 @@ export class NestedDonutChartComponent implements OnInit, OnChanges, OnDestroy {
     @Output() itemClick = new EventEmitter<NestedDonutChartData>();
 
     /** Access the SVG element */
-    @ViewChild('chart', { static: false }) _chartElement: ElementRef;
+    @ViewChild('chart', { static: true }) _chartElement: ElementRef;
 
     /** Allow custom tooltip template */
-    @ContentChild('tooltip', { static: false }) _customTooltip: TemplateRef<NestedDonutChartData>;
+    @ContentChild('tooltip', { static: true }) _customTooltip: TemplateRef<NestedDonutChartData>;
 
     /** Indicate if the tooltip should be visible */
     _tooltipVisible: boolean = false;
